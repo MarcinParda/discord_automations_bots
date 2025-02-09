@@ -26,3 +26,22 @@ class CommandsCog(commands.Cog):
         message = "\n".join(
             f"{feed['title']}: {feed['url']}" for feed in feeds)
         await interaction.response.send_message(message)
+
+    @app_commands.command(name="reloadallextentions", description="Reload all extentions of the bot")
+    # @commands.is_owner()
+    async def reload_all_extentions(self, interaction: discord.Interaction):
+        """Reloads all active extensions"""
+        extensions = list(self.bot.extensions.keys())
+        
+        for ext in extensions:
+            try:
+                await self.bot.reload_extension(ext)
+            except commands.ExtensionError as e:
+                print(f"❌ {ext}: {e}")
+                return
+        
+        await interaction.response.send_message(f"🔄 Reloaded {len(extensions)} extensions")
+
+
+async def setup(bot):
+    await bot.add_cog(CommandsCog(bot))

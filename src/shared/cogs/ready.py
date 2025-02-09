@@ -17,7 +17,10 @@ class ReadyCog(commands.Cog):
 
         try:
             print('Started syncing application (/) commands.')
-            await self.bot.tree.sync()
+            await self.bot.tree.sync() 
             print('Successfully synced application (/) commands.')
         except Exception as e:
             print(f'An error occurred while syncing commands: {e}')
+
+async def setup(bot):
+    await bot.add_cog(ReadyCog(bot))

@@ -1,8 +1,6 @@
+import pathlib
 import discord
 from discord.ext import commands
-from shared.cogs.client.ready import ReadyCog
-from walle.cogs.guild.message import MessageCog
-from walle.cogs.interactions.commands import CommandsCog
 
 
 class Walle(commands.Bot):
@@ -11,7 +9,16 @@ class Walle(commands.Bot):
         intents.message_content = True
         super().__init__(command_prefix='/', intents=intents)
 
+    async def load_extensions_from_path(self, path, prefix):
+        for file in path.glob('*.py'):
+            if file.name == '__init__.py':
+                continue
+            if file.name.endswith('.py'):
+                await self.load_extension(f'{prefix}.{file.name[:-3]}')
+
     async def setup_hook(self):
-        await self.add_cog(MessageCog(self))
-        await self.add_cog(CommandsCog(self))
-        await self.add_cog(ReadyCog(self))
+        walle_cogs_path = pathlib.Path('walle/cogs')
+        shared_cogs_path = pathlib.Path('shared/cogs')
+
+        await self.load_extensions_from_path(walle_cogs_path, 'walle.cogs')
+        await self.load_extensions_from_path(shared_cogs_path, 'shared.cogs')

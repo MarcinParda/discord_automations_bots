@@ -41,3 +41,6 @@ class MessageCog(commands.Cog):
             else:
                 await respond_with_thread(message, self.bot)
                 return
+            
+async def setup(bot):
+    await bot.add_cog(MessageCog(bot))
