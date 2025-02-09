@@ -17,8 +17,8 @@ class Walle(commands.Bot):
                 await self.load_extension(f'{prefix}.{file.name[:-3]}')
 
     async def setup_hook(self):
-        walle_cogs_path = pathlib.Path('walle/cogs')
-        shared_cogs_path = pathlib.Path('shared/cogs')
+        walle_cogs_path = pathlib.Path('src/walle/cogs')
+        shared_cogs_path = pathlib.Path('src/shared/cogs')
 
         await self.load_extensions_from_path(walle_cogs_path, 'walle.cogs')
         await self.load_extensions_from_path(shared_cogs_path, 'shared.cogs')
