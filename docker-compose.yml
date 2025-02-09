@@ -1,0 +1,28 @@
+services:
+  discord-bot:
+    build: .
+    develop:
+      watch:
+        - action: sync+
+          path: ./src
+          target: /app/src
+          ignore:
+            - __pycache__/
+            - .pytest_cache/
+        - action: rebuild
+          path: pyproject.toml
+        - action: rebuild
+          path: poetry.lock
+    ports:
+      - '80:80'
+    environment:
+      - DISCORD_TOKEN=${DISCORD_TOKEN}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GUILD_ID=${GUILD_ID}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - NOTION_API_TOKEN=${NOTION_API_TOKEN}
+      - NOTION_READER_DATABASE_ID=${NOTION_READER_DATABASE_ID}
+      - NOTION_FEEDS_DATABASE_ID=${NOTION_FEEDS_DATABASE_ID}
+      - PYTHONPATH=/app/src
+      - RELOAD=true
+    restart: always
