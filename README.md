@@ -10,6 +10,8 @@ This project is a Discord bot built using `discord.py` that provides various aut
 - **External Integrations**: Integrates with OpenAI, Groq, and Notion for enhanced functionalities.
 
 ## TODO
+
+- [x] Implement poetry for dependency management
 - [ ] Add OpenRouter integration
 - [ ] Command to create a new thread for AI chatting
 - [ ] Disable AI chatting in channels, keep it only in threads
