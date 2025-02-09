@@ -28,7 +28,6 @@ class CommandsCog(commands.Cog):
         await interaction.response.send_message(message)
 
     @app_commands.command(name="reloadallextentions", description="Reload all extentions of the bot")
-    # @commands.is_owner()
     async def reload_all_extentions(self, interaction: discord.Interaction):
         """Reloads all active extensions"""
         extensions = list(self.bot.extensions.keys())
