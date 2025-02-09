@@ -1,0 +1,19 @@
+# Python
+discord_automations_bots_venv/
+__pycache__/
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Optional eslint cache
+.eslintcache
+
+# dotenv environment variables file
+.env
+
+# IDEs and editors
+.idea/
+.vscode/
+*.sublime-project
