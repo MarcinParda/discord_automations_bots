@@ -1,6 +1,7 @@
 # Python
 discord_automations_bots_venv/
 __pycache__/
+.mypy_cache/
 
 # Logs
 logs/
