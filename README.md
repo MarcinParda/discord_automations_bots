@@ -12,6 +12,7 @@ This project is a Discord bot built using `discord.py` that provides various aut
 ## TODO
 
 - [x] Implement poetry for dependency management
+- [x] Implement extentions and extentions reloading
 - [ ] Add OpenRouter integration
 - [ ] Command to create a new thread for AI chatting
 - [ ] Disable AI chatting in channels, keep it only in threads
